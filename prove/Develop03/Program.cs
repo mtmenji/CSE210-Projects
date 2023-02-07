@@ -4,6 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop03 World!");
+        Fraction one = new Fraction();
+        Console.WriteLine(one.GetFractionInt());
+        Fraction whole = new Fraction(6);
+        Console.WriteLine(whole.GetWholeNumber());
+        Fraction fraction = new Fraction(3, 4);
+        Console.WriteLine(fraction.GetFractionString());
+        Console.WriteLine(fraction.GetDecimalValue());
     }
 }
