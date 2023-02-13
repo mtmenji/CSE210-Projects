@@ -1,15 +1,43 @@
-using System;
+﻿using System;
 
-class Program
+public class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
-        Fraction one = new Fraction();
-        Console.WriteLine(one.GetFractionInt());
-        Fraction whole = new Fraction(6);
-        Console.WriteLine(whole.GetWholeNumber());
-        Fraction fraction = new Fraction(3, 4);
-        Console.WriteLine(fraction.GetFractionString());
-        Console.WriteLine(fraction.GetDecimalValue());
+        string testText = "For behold this is my work and my glory to bring to pass the immortality and eternal life of man.";
+        string reference = "Moses 1:39 ";
+        Scripture scripture = new Scripture(testText);
+
+        string choice = "";
+        try{
+            while(choice != "QUIT")
+            {
+                
+                // 1. show scripture
+                Console.Clear();
+                Console.Write(reference);
+                string text = scripture.ToString();
+                Console.WriteLine(text);
+                Console.WriteLine("Press enter to clear some words, type QUIT to quit, or type RESTART to restart.");
+
+                // 2. wait for input
+                choice = Console.ReadLine();
+
+                // 3. if not quit hide a word
+                if (choice != "RESTART")
+                {
+                    scripture.RandomlyHideWord();
+                }
+
+                // 4. restore whole thing
+                if (choice == "RESTART")
+                {
+                    scripture.MakeAllWordsVisible();
+                }
+            }
+        }
+        catch (Exception e) {
+            Console.WriteLine("There are no more words to clear out! You're done!");
+        }
     }
 }
