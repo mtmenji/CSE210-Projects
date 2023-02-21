@@ -9,7 +9,6 @@ public class Program
         Scripture scripture = new Scripture(testText);
 
         string choice = "";
-        try{
             while(choice != "QUIT")
             {
                 
@@ -18,6 +17,12 @@ public class Program
                 Console.Write(reference);
                 string text = scripture.ToString();
                 Console.WriteLine(text);
+
+                if (!scripture.HasVisibleWords())
+                {
+                    break;
+                }
+
                 Console.WriteLine("Press enter to clear some words, type QUIT to quit, or type RESTART to restart.");
 
                 // 2. wait for input
@@ -35,9 +40,5 @@ public class Program
                     scripture.MakeAllWordsVisible();
                 }
             }
-        }
-        catch (Exception e) {
-            Console.WriteLine("There are no more words to clear out! You're done!");
-        }
     }
 }

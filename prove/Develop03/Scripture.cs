@@ -20,9 +20,9 @@ public class Scripture
     {
         List<Word> visibleWords = GetVisibleWords();
         Random random = new Random();
-        int index  = random.Next(0, visibleWords.Count);
-        Word word = visibleWords[index];
-        for (int p = 0; p < 2; p++) {
+        for (int p = 0; p < 3; p++) {
+            int index  = random.Next(0, visibleWords.Count);
+            Word word = visibleWords[index];
             word.Hide();
         }
     }
@@ -44,6 +44,21 @@ public class Scripture
             wholeText += $" {text}";
         }
         return wholeText;
+    }
+
+    public bool HasVisibleWords()
+    {
+        bool result = false;
+        foreach(Word word in _words)
+        {
+            if (word.IsVisible())
+            {
+                result = true;
+                break;
+            }
+        }
+
+        return result;
     }
 
     private List<Word> GetVisibleWords()
