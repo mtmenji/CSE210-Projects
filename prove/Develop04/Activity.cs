@@ -6,7 +6,6 @@ class Activity
     protected int _activityDuration;
     protected DateTime futureTime;
 
-    
     public void ActivityBeginMessage(string activity, string description)
     {
         Console.WriteLine($"\nWelcome to the {activity} Activity.");
